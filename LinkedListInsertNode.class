@@ -1,0 +1,70 @@
+public class MyClass {
+    
+    Node head;
+    static class Node
+    {
+        int n;
+        Node next;
+        
+        Node(int d)
+        {
+            n=d;
+            next=null;
+        }
+    }
+    
+    public static void main(String args[]) {
+     MyClass list=new MyClass();
+     list.head=new Node(1);
+     Node second=new Node(2);
+     Node third=new Node(3);
+     
+     list.head.next=second;
+     second.next=third;
+     
+     list.printlist();
+     
+     list.insertAtFront(new Node(0));
+     list.insertAtBack(new Node(4));
+     list.insertAfter(3,new Node(5));
+     
+     list.printlist();
+    }
+    
+    void printlist()
+    {
+        Node x=head;
+    
+        while(x!=null)
+        {
+            System.out.println(x.n);
+            x=x.next;
+        }
+    }
+    
+    void insertAtFront(Node n)
+    {
+        Node temp=head;
+        head=n;
+        n.next=temp;
+    }
+    
+    void insertAtBack(Node n)
+    {
+        Node x=head;
+        while(x.next!=null)
+        {
+            x=x.next;
+        }
+        x.next=n;
+    }
+    
+    void insertAfter(int d, Node n)
+    {
+        Node x=head;
+        while(x.n!=d)
+            x=x.next;
+        n.next=x.next;
+        x.next=n;
+    }
+}
