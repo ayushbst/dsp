@@ -1,0 +1,55 @@
+public class MyClass {
+    Node top;
+    static class Node
+    {
+        int d;
+        Node next;
+        Node(int n)
+        {
+            d=n;
+            next=null;
+        }
+    }
+    void push(Node n)
+    {
+        if(top==null)
+        {
+            top=n;
+            return;
+        }
+        n.next=top;
+        top=n;
+    }
+    void pop()
+    {
+        if(top==null)
+        return;
+        top=top.next;
+    }
+    Node seek()
+    {
+        return top;
+    }
+    void printStack()
+    {
+        Node x=top;
+        while(x!=null)
+        {
+            System.out.println(x.d);
+            x=x.next;
+        }
+    }
+    public static void main(String args[]) {
+      MyClass stack=new MyClass();
+      Node n1=new Node(1);
+      Node n2=new Node(2);
+      Node n3=new Node(3);
+      stack.push(n1);
+      stack.push(n2);
+      stack.push(n3);
+      System.out.println(stack.seek().d);
+      stack.printStack();
+      stack.pop();
+      stack.printStack();
+    }
+}
